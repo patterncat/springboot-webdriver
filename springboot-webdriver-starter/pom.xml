@@ -5,11 +5,12 @@
 
 	<groupId>cn.patterncat</groupId>
 	<artifactId>springboot-webdriver-starter</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>springboot-webdriver-starter</name>
 	<description>springboot-webdriver-starter</description>
+	<url>https://github.com/patterncat/springboot-webdriver</url>
 
 	<dependencyManagement>
 		<dependencies>
@@ -30,6 +31,7 @@
 		<lombok.version>1.16.4</lombok.version>
 		<selenium.java.version>2.45.0</selenium.java.version>
 		<phantomjsdriver.version>1.2.1</phantomjsdriver.version>
+		<common.pool.version>2.4.2</common.pool.version>
 	</properties>
 
 	<dependencies>
@@ -55,15 +57,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.5</version>
-		</dependency>
-
-		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-pool2</artifactId>
-			<version>2.4.2</version>
+			<version>${common.pool.version}</version>
 		</dependency>
 
 		<!-- web driver-->
