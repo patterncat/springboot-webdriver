@@ -14,7 +14,9 @@ public class WebDriverProperties {
 
     private int poolMaxIdle = 8; //生产上建议跟max total一致,避免makeObject开销
 
-    private int poolMinIdle = 8;
+    private int poolMinIdle = 4;
+
+    private boolean preparePool = true;
 
     private int pageLoadTimeoutMs = 30*1000;
 
@@ -76,5 +78,13 @@ public class WebDriverProperties {
 
     public void setImplicitlyWaitMs(int implicitlyWaitMs) {
         this.implicitlyWaitMs = implicitlyWaitMs;
+    }
+
+    public boolean isPreparePool() {
+        return preparePool;
+    }
+
+    public void setPreparePool(boolean preparePool) {
+        this.preparePool = preparePool;
     }
 }

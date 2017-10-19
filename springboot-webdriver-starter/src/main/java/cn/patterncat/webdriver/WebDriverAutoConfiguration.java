@@ -1,20 +1,28 @@
 package cn.patterncat.webdriver;
 
+import cn.patterncat.webdriver.component.DriverProcessor;
 import cn.patterncat.webdriver.component.PooledDriverFactory;
 import cn.patterncat.webdriver.component.WebDriverPool;
 import cn.patterncat.webdriver.component.WebDriverTemplate;
 import net.anthavio.phanbedder.Phanbedder;
+import org.apache.commons.exec.launcher.CommandLauncher;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
+import org.openqa.selenium.remote.Command;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.StopWatch;
 
 import java.io.File;
+import java.util.stream.IntStream;
 
 /**
  * Created by patterncat on 2017-10-18.
@@ -29,6 +37,8 @@ import java.io.File;
 )
 @EnableConfigurationProperties(WebDriverProperties.class)
 public class WebDriverAutoConfiguration {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(WebDriverAutoConfiguration.class);
 
     private static final String USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11";
 
@@ -71,7 +81,24 @@ public class WebDriverAutoConfiguration {
     }
 
     @Bean
-    public WebDriverTemplate webDriverTemplate(){
-        return new WebDriverTemplate(webDriverPool());
+    public WebDriverTemplate webDriverTemplate(WebDriverPool pool){
+        return new WebDriverTemplate(pool);
+    }
+
+    @Bean
+    public CommandLineRunner preparePoolRunner(WebDriverPool pool){
+        return new CommandLineRunner() {
+            @Override
+            public void run(String... strings) throws Exception {
+                if(properties.isPreparePool()){
+                    StopWatch stopWatch = new StopWatch("prepare pool");
+                    stopWatch.start();
+                    LOGGER.info("start to prepare pool size:{}",properties.getPoolMinIdle());
+                    pool.preparePool();
+                    stopWatch.stop();
+                    LOGGER.info("finish prepare pool size:{},cost:{}",properties.getPoolMinIdle(),stopWatch.prettyPrint());
+                }
+            }
+        };
     }
 }
