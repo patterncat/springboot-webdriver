@@ -59,7 +59,7 @@ public class WebDriverAutoConfiguration {
         return factory;
     }
 
-    @Bean
+    @Bean(destroyMethod = "close") //default is close() or shutdown()
     public WebDriverPool webDriverPool(){
         GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();
         poolConfig.setMaxTotal(properties.getPoolMaxTotal());
