@@ -1,6 +1,6 @@
 package cn.patterncat.webdriver.component;
 
-import cn.patterncat.webdriver.exception.NoAvailableDriverException;
+import cn.patterncat.webdriver.exception.NoDriverAvailableException;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,8 +28,8 @@ public class WebDriverTemplate {
             return result;
         }catch (NoSuchElementException e){
             //pool资源耗尽
-            LOGGER.error(e.getMessage(),e);
-            throw new NoAvailableDriverException(e.getMessage(),e);
+//            LOGGER.error(e.getMessage(),e);
+            throw new NoDriverAvailableException(e.getMessage(),e);
         }finally{
             if(driver != null){
                 pool.returnObject(driver);
