@@ -1,4 +1,7 @@
 # version
+## 0.05
+- support chrome driver 2.33 and chrome 60-62
+
 ## 0.0.4
 - phantomjs version 2.1.1
 - update phantomjsdriver to 1.4.3
@@ -48,6 +51,10 @@ basic finish driver config
 - PhantomJSDriver
 - RemoteWebDriver
 - SafariDriver
+
+## chrome driver
+- [chromedriver-2.33](http://chromedriver.storage.googleapis.com/index.html?path=2.33/)
+>Supports Chrome v60-62
 
 ## doc
 - [phanbedder](https://github.com/anthavio/phanbedder)

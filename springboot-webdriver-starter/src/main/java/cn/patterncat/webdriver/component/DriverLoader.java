@@ -1,9 +1,11 @@
 package cn.patterncat.webdriver.component;
 
+import cn.patterncat.webdriver.util.UnPacker;
 import net.anthavio.phanbedder.Phanbedder;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
@@ -24,7 +26,9 @@ public class DriverLoader {
 
         //根据操作系统类型解压embed driver到指定路径,并配置driver路径
         if(DriverType.CHROME == driverType){
-//            dcaps.setPlatform(Platform.ANDROID);
+            File chrome = UnPacker.unpack(driverType);
+            System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY,chrome.getAbsolutePath());
+            dcaps.setCapability(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, chrome.getAbsolutePath());
             return dcaps;
         }
 
@@ -43,7 +47,7 @@ public class DriverLoader {
     public static WebDriver newInstance(DriverType driverType,DesiredCapabilities dcaps){
         WebDriver driver = null;
         if(DriverType.CHROME == driverType){
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(dcaps);
             return driver;
         }
 
