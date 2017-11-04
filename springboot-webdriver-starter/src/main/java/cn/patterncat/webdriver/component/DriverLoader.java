@@ -2,11 +2,11 @@ package cn.patterncat.webdriver.component;
 
 import cn.patterncat.webdriver.util.UnPacker;
 import net.anthavio.phanbedder.Phanbedder;
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.GeckoDriverService;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -33,7 +33,9 @@ public class DriverLoader {
         }
 
         if(DriverType.FIREFOX == driverType){
-
+            File firefox = UnPacker.unpack(driverType);
+            System.setProperty(GeckoDriverService.GECKO_DRIVER_EXE_PROPERTY,firefox.getAbsolutePath());
+            dcaps.setCapability(GeckoDriverService.GECKO_DRIVER_EXE_PROPERTY, firefox.getAbsolutePath());
             return dcaps;
         }
 
@@ -52,7 +54,7 @@ public class DriverLoader {
         }
 
         if(DriverType.FIREFOX == driverType){
-            driver = new FirefoxDriver();
+            driver = new FirefoxDriver(dcaps);
             return driver;
         }
 

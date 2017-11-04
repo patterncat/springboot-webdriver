@@ -1,6 +1,7 @@
 # version
 ## 0.05
 - support chrome driver 2.33 and chrome 60-62
+- support firefox driver 57.0~b14
 
 ## 0.0.4
 - phantomjs version 2.1.1
@@ -56,6 +57,10 @@ basic finish driver config
 - [chromedriver-2.33](http://chromedriver.storage.googleapis.com/index.html?path=2.33/)
 >Supports Chrome v60-62
 
+## firefox driver
+- [geckodriver](https://github.com/mozilla/geckodriver/releases)
+
 ## doc
 - [phanbedder](https://github.com/anthavio/phanbedder)
 - [webdriver](http://www.51testing.com/zhuanti/webdriver.htm)
+- [How To Capture Full Page Screenshot Using Selenium WebDriver](http://www.softwaretestingmaterial.com/how-to-capture-full-page-screenshot-using-selenium-webdriver/)
