@@ -1,5 +1,6 @@
 package cn.patterncat.webdriver;
 
+import cn.patterncat.webdriver.component.DriverType;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
@@ -9,6 +10,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class WebDriverProperties {
 
     private boolean enabled = true;
+
+    private DriverType driverType = DriverType.PHANTOM_JS;
 
     private int poolMaxTotal = 8;
 
@@ -86,5 +89,13 @@ public class WebDriverProperties {
 
     public void setPreparePool(boolean preparePool) {
         this.preparePool = preparePool;
+    }
+
+    public DriverType getDriverType() {
+        return driverType;
+    }
+
+    public void setDriverType(DriverType driverType) {
+        this.driverType = driverType;
     }
 }

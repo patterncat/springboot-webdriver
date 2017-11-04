@@ -63,7 +63,19 @@
             <version>${common.pool.version}</version>
         </dependency>
 
-        <!-- embeded server side web browser phantomjs versioin 2.1.1 -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-firefox-driver</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- embeded server side web browser phantomjs version 2.1.1 -->
         <dependency>
             <groupId>net.anthavio</groupId>
             <artifactId>phanbedder-2.1.1</artifactId>

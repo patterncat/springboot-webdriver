@@ -1,15 +1,10 @@
 package cn.patterncat.webdriver;
 
-import cn.patterncat.webdriver.component.DriverProcessor;
-import cn.patterncat.webdriver.component.PooledDriverFactory;
-import cn.patterncat.webdriver.component.WebDriverPool;
-import cn.patterncat.webdriver.component.WebDriverTemplate;
+import cn.patterncat.webdriver.component.*;
 import net.anthavio.phanbedder.Phanbedder;
-import org.apache.commons.exec.launcher.CommandLauncher;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
-import org.openqa.selenium.remote.Command;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,8 +35,6 @@ public class WebDriverAutoConfiguration {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WebDriverAutoConfiguration.class);
 
-    private static final String USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11";
-
     private final WebDriverProperties properties;
 
     public WebDriverAutoConfiguration(WebDriverProperties properties) {
@@ -50,11 +43,7 @@ public class WebDriverAutoConfiguration {
 
     @Bean
     public PooledDriverFactory pooledDriverFactory(){
-        File phantomjs = Phanbedder.unpack();
-        DesiredCapabilities dcaps = new DesiredCapabilities();
-        dcaps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, phantomjs.getAbsolutePath());
-        dcaps.setCapability(PhantomJSDriverService.PHANTOMJS_PAGE_SETTINGS_PREFIX + "userAgent",USER_AGENT);
-
+        DesiredCapabilities dcaps = DriverLoader.unpackDriverIfNeeded(properties.getDriverType());
         PooledDriverFactory factory = new PooledDriverFactory(dcaps,properties);
         return factory;
     }
