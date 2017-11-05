@@ -43,7 +43,7 @@ public class WebDriverAutoConfiguration {
 
     @Bean
     public PooledDriverFactory pooledDriverFactory(){
-        DesiredCapabilities dcaps = DriverLoader.unpackDriverIfNeeded(properties.getDriverType());
+        DesiredCapabilities dcaps = DriverLoader.unpackDriverIfNeeded(properties.getDriverType(),properties.getDeviceName());
         PooledDriverFactory factory = new PooledDriverFactory(dcaps,properties);
         return factory;
     }

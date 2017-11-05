@@ -13,6 +13,11 @@ public class WebDriverProperties {
 
     private DriverType driverType = DriverType.PHANTOM_JS;
 
+    /**
+     * only works in chrome driver
+     */
+    private String deviceName;
+
     private int poolMaxTotal = 8;
 
     private int poolMaxIdle = 8; //生产上建议跟max total一致,避免makeObject开销
@@ -97,5 +102,13 @@ public class WebDriverProperties {
 
     public void setDriverType(DriverType driverType) {
         this.driverType = driverType;
+    }
+
+    public String getDeviceName() {
+        return deviceName;
+    }
+
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
     }
 }

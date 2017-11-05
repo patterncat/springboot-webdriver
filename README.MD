@@ -3,6 +3,11 @@
 - support chrome driver 2.33 and chrome 60-62
 - support firefox driver 57.0~b14
 
+### TODO
+- phantomjs not support promise
+- chrome and firefox not support full screen shot
+>如果页面是适配移动端一屏可以展示完整,则可以设置driver的emulation
+
 ## 0.0.4
 - phantomjs version 2.1.1
 - update phantomjsdriver to 1.4.3
