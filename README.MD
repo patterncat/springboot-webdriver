@@ -1,17 +1,40 @@
-# version
-## 0.05
-- support chrome driver 2.33 and chrome 60-62
-- support firefox driver 57.0~b14
-
-### TODO
+## TODO
 - phantomjs not support promise
 - chrome and firefox not support full screen shot
 >如果页面是适配移动端一屏可以展示完整,则可以设置driver的emulation
+
+# version
+## 0.05
+- chrome driver 2.33 and support chrome 60-62
+- firefox driver v0.19.1
+- phantomjs version 2.1.1
+
+>内置了chrome\firefox的不同操作系统的driver,jar包增大到25M
 
 ## 0.0.4
 - phantomjs version 2.1.1
 - update phantomjsdriver to 1.4.3
 - update selenium version to 3.4.0
+
+change selenum dependency to provided
+need to add selenium-api,remote-driver,support dependency manually
+```
+        <dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-api</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-remote-driver</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-support</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+```
 
 ## 0.0.3
 change exception to NoDriverAvailableException
