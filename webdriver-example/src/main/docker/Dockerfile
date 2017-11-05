@@ -1,6 +1,10 @@
-FROM registry.cn-hangzhou.aliyuncs.com/patterncat/chrome:ubuntu1404
+FROM registry.cn-hangzhou.aliyuncs.com/patterncat/firefox:ubuntu1404
 VOLUME /tmp
 ADD app.jar app.jar
 RUN bash -c 'touch /app.jar'
 EXPOSE 8080
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+
+ADD start.sh /usr/bin/start.sh
+RUN chmod +x /usr/bin/start.sh
+
+ENTRYPOINT ["/usr/bin/start.sh"]
