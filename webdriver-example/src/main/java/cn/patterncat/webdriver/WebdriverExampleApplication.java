@@ -33,25 +33,25 @@ public class WebdriverExampleApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... strings) throws Exception {
-		webDriverTemplate.execute(15000, new DriverProcessor<Void>() {
-			@Override
-			public Void execute(WebDriver driver) {
-				driver.get("https://www.baidu.com/");
-				try{
-					WebDriverWait webDriverWait = new WebDriverWait(driver, TimeUnit.MILLISECONDS.toSeconds(15000),500); //默认500ms轮询一次
-					webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("demo_wait_class")));
-				}catch (Exception e){
-					//when timeout and element not found
-//					LOGGER.error("web driver wait element timeout",e);
-				}
-				File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-				try {
-					FileUtils.copyFile(scrFile, new File("screenshot.jpg"));
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				return null;
-			}
-		});
+//		webDriverTemplate.execute(15000, new DriverProcessor<Void>() {
+//			@Override
+//			public Void execute(WebDriver driver) {
+//				driver.get("https://www.baidu.com/");
+//				try{
+//					WebDriverWait webDriverWait = new WebDriverWait(driver, TimeUnit.MILLISECONDS.toSeconds(15000),500); //默认500ms轮询一次
+//					webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("demo_wait_class")));
+//				}catch (Exception e){
+//					//when timeout and element not found
+////					LOGGER.error("web driver wait element timeout",e);
+//				}
+//				File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+//				try {
+//					FileUtils.copyFile(scrFile, new File("screenshot.jpg"));
+//				} catch (IOException e) {
+//					e.printStackTrace();
+//				}
+//				return null;
+//			}
+//		});
 	}
 }
