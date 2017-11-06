@@ -72,7 +72,16 @@ public class PooledDriverFactory extends BasePooledObjectFactory<WebDriver> {
 
     @Override
     public boolean validateObject(PooledObject<WebDriver> p) {
-        return super.validateObject(p);
+        WebDriver webDriver = p.getObject();
+        if(webDriver == null){
+            return false;
+        }
+        try{
+            webDriver.getTitle();
+        }catch (Exception e){
+            return false;
+        }
+        return true;
     }
 
     /**
