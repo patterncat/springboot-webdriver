@@ -54,10 +54,19 @@ public class WebDriverAutoConfiguration {
         poolConfig.setMaxTotal(properties.getPoolMaxTotal());
         poolConfig.setMinIdle(properties.getPoolMinIdle()); //init pool size
         poolConfig.setMaxIdle(properties.getPoolMaxIdle());
-//        poolConfig.setTestOnBorrow(true);
-//        poolConfig.setTestOnCreate();
-//        poolConfig.setTestOnReturn();
-//        poolConfig.setTestWhileIdle();
+        if(properties.isTestOnBorrow()){
+            poolConfig.setTestOnBorrow(true);
+        }
+        if(properties.isTestOnCreate()){
+            poolConfig.setTestOnCreate(true);
+        }
+        if(properties.isTestOnReturn()){
+            poolConfig.setTestOnReturn(true);
+        }
+        if(properties.isTestWhileIdle()){
+            poolConfig.setTestWhileIdle(true);
+        }
+
 //        poolConfig.setBlockWhenExhausted();
 //        poolConfig.setMaxWaitMillis();
 //        poolConfig.setLifo();

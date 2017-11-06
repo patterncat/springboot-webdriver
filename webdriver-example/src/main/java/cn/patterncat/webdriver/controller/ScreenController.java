@@ -5,6 +5,7 @@ import cn.patterncat.webdriver.component.WebDriverTemplate;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,9 @@ public class ScreenController {
             @Override
             public byte[] execute(WebDriver driver) {
                 driver.get(url);
+
                 byte[] data = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+                driver.close(); //close window and make this invalid and destory
                 return data;
             }
         });

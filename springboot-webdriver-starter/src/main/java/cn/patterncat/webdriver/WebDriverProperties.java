@@ -11,6 +11,14 @@ public class WebDriverProperties {
 
     private boolean enabled = true;
 
+    private boolean testOnBorrow = false;
+
+    private boolean testOnReturn = false;
+
+    private boolean testOnCreate = false;
+
+    private boolean testWhileIdle = false;
+
     private DriverType driverType = DriverType.PHANTOM_JS;
 
     /**
@@ -110,5 +118,37 @@ public class WebDriverProperties {
 
     public void setDeviceName(String deviceName) {
         this.deviceName = deviceName;
+    }
+
+    public boolean isTestOnBorrow() {
+        return testOnBorrow;
+    }
+
+    public void setTestOnBorrow(boolean testOnBorrow) {
+        this.testOnBorrow = testOnBorrow;
+    }
+
+    public boolean isTestOnReturn() {
+        return testOnReturn;
+    }
+
+    public void setTestOnReturn(boolean testOnReturn) {
+        this.testOnReturn = testOnReturn;
+    }
+
+    public boolean isTestOnCreate() {
+        return testOnCreate;
+    }
+
+    public void setTestOnCreate(boolean testOnCreate) {
+        this.testOnCreate = testOnCreate;
+    }
+
+    public boolean isTestWhileIdle() {
+        return testWhileIdle;
+    }
+
+    public void setTestWhileIdle(boolean testWhileIdle) {
+        this.testWhileIdle = testWhileIdle;
     }
 }

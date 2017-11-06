@@ -18,7 +18,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.springframework.util.StringUtils;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 
@@ -79,8 +81,15 @@ public class DriverLoader {
         DesiredCapabilities dcaps = new DesiredCapabilities();
         dcaps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, phantomjs.getAbsolutePath());
         dcaps.setCapability(PhantomJSDriverService.PHANTOMJS_PAGE_SETTINGS_PREFIX + "userAgent",USER_AGENT);
-        dcaps.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
+        dcaps.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION,true);
         CapabilityUtil.setLoggingPreferences(dcaps);
+
+        List<String> cliArgs = new ArrayList<String>();
+//        cliArgs.add( "--web-security=false" );
+        cliArgs.add( "--ssl-protocol=any" );
+        cliArgs.add( "--ignore-ssl-errors=true" );
+        dcaps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, cliArgs);
+        dcaps.setCapability(CapabilityType.ACCEPT_SSL_CERTS,true);
         return dcaps;
     }
 

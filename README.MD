@@ -4,6 +4,11 @@
 >如果页面是适配移动端一屏可以展示完整,则可以设置driver的emulation
 
 # version
+## 0.0.6
+- add ssl config for phantomjs
+- add testOnBorrow,testOnReturn,testOnCreate,testWhileIdle config
+- add validate driver logic
+
 ## 0.05
 - chrome driver 2.33 and support chrome 60-62
 - firefox driver v0.19.1
