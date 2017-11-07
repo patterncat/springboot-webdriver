@@ -40,7 +40,7 @@ public class DriverLoader {
 
             DesiredCapabilities dcaps = DesiredCapabilities.chrome();
             dcaps.setCapability(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, chrome.getAbsolutePath());
-            dcaps.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
+//            dcaps.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
 
             if(!StringUtils.isEmpty(deviceName)){
                 CapabilityUtil.setChromeDeviceEmulation(dcaps,deviceName);
@@ -69,7 +69,7 @@ public class DriverLoader {
 
             dcaps.setCapability(FirefoxDriver.PROFILE, profile);
             dcaps.setCapability(CapabilityType.ELEMENT_SCROLL_BEHAVIOR, ElementScrollBehavior.BOTTOM);
-            dcaps.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
+//            dcaps.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
 
             CapabilityUtil.setLoggingPreferences(dcaps);
 
@@ -81,7 +81,7 @@ public class DriverLoader {
         DesiredCapabilities dcaps = new DesiredCapabilities();
         dcaps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, phantomjs.getAbsolutePath());
         dcaps.setCapability(PhantomJSDriverService.PHANTOMJS_PAGE_SETTINGS_PREFIX + "userAgent",USER_AGENT);
-        dcaps.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION,true);
+//        dcaps.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION,true);
         CapabilityUtil.setLoggingPreferences(dcaps);
 
         List<String> cliArgs = new ArrayList<String>();

@@ -4,6 +4,9 @@
 >如果页面是适配移动端一屏可以展示完整,则可以设置driver的emulation
 
 # version
+## 0.0.7
+- remove ForSeleniumServer.ENSURING_CLEAN_SESSION
+
 ## 0.0.6
 - add ssl config for phantomjs
 - add testOnBorrow,testOnReturn,testOnCreate,testWhileIdle config
