@@ -40,6 +40,8 @@ public class WebDriverProperties {
 
     private int implicitlyWaitMs = 15*1000;
 
+    private boolean diskCacheEnabled = false;
+
     public boolean isEnabled() {
         return enabled;
     }
@@ -150,5 +152,13 @@ public class WebDriverProperties {
 
     public void setTestWhileIdle(boolean testWhileIdle) {
         this.testWhileIdle = testWhileIdle;
+    }
+
+    public boolean isDiskCacheEnabled() {
+        return diskCacheEnabled;
+    }
+
+    public void setDiskCacheEnabled(boolean diskCacheEnabled) {
+        this.diskCacheEnabled = diskCacheEnabled;
     }
 }
